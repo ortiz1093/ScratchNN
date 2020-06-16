@@ -1,5 +1,5 @@
 CC := g++
-OBJ = main.o activation.o readIris.o
+OBJ = main.o activation.o readIris.o matrixOps.o
 TARGET = BasicNN
 
 default: $(TARGET)
