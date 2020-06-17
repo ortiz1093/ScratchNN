@@ -1,5 +1,15 @@
 #include "matrixOps.h"
 
+bool between(double lo, double hi, double x){
+  bool ans = false;
+
+  if (x >= lo && x <= hi){
+    ans = true;
+  }
+
+  return ans;
+}
+
 void displayMat(std::vector<std::vector<double>> A){
   for (int i = 0; i < A.size(); i++){
     for (int j = 0; j < A[i].size(); j++){
@@ -74,4 +84,62 @@ std::vector<std::vector<double>> transpose(std::vector<std::vector<double>> A){
   }
 
   return result;
+}
+
+std::vector<std::vector<double>> submatrix(std::vector<std::vector<double>> A, std::vector<int> rows, std::vector<int> cols){
+  int rowBegin, rowEnd, colBegin, colEnd;
+  int maxRows = getSize(A)[0];
+  int maxCols = getSize(A)[1];
+
+  if (!between(1,2,rows.size())){
+    std::cout << "'rows' may only contain 1 or 2 elements." << std::endl;
+  } else if (rows[0] >= rows[1]){
+    std::cout << "rows[0] must be less than rows[1]" << std::endl;
+  }
+
+  if (between(0, maxRows, rows[0])){
+    rowBegin = rows[0];
+  } else {
+    rowBegin = 0;
+  }
+
+  if (rows.size()==2 && between(0, maxRows, rows[1])){
+    rowEnd = rows[1];
+  } else {
+    rowEnd = maxRows;
+  }
+
+  if (!between(1,2,cols.size())){
+    std::cout << "'cols' may only contain 1 or 2 elements." << std::endl;
+  } else if (cols[0] >= cols[1]){
+    std::cout << "cols[0] must be less than cols[1]" << std::endl;
+  }
+
+  if (between(0, maxCols, cols[0])){
+    colBegin = cols[0];
+  } else {
+    colBegin = 0;
+  }
+
+  if (cols.size()==2 && between(0, maxCols, cols[1])){
+    colEnd = cols[1];
+  } else {
+    colEnd = maxCols;
+  }
+
+  std::vector<std::vector<double>> result;
+  std::vector<double> row;
+  double num;
+
+  for (int i = rowBegin; i < rowEnd; i++){
+    row = {};
+    for (int j = colBegin; j < colEnd; j++){
+      num = A[i][j];
+      row.push_back(num);
+    }
+    result.push_back(row);
+  }
+
+  return result;
+
 }
