@@ -34,6 +34,7 @@ int main () {
   cout << "Size Y_hat: " << endl;
   displaySize(Y_hat);
 
+  displayMat(Y_hat);
 
   return 0;
 

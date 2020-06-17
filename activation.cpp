@@ -46,7 +46,7 @@ std::vector<std::vector<double>> softmax(std::vector<std::vector<double>> X, int
     }
 
     for (int j = 0; j < numOutputs; j++){
-      row.push_back(X[i][j]/sumExp);
+      row.push_back(exp(X[i][j])/sumExp);
     }
     result.push_back(row);
   }
