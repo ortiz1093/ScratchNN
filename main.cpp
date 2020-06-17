@@ -5,32 +5,63 @@
 #include  <iostream>
 #include <time.h>
 
-void check (std::vector<int> v){
-  if (v.size()==1) {
-    std::cout << "Got one" << std::endl;
-  } else if (v.size()==2) {
-    std::cout << "Got two" << std::endl;
-  } else {
-    std::cout << "Wrong number" << std::endl;
-  }
+void testFlag (int i){
+  std::cout << "Flag " << i << std::endl;
 }
 
 int main () {
-  // std::string file = "./DATA/10-working/iris.csv";
+  using namespace std;
+
+  // string file = "./DATA/10-working/iris.csv";
+  // testFlag(1);
   //
-  // std::vector<std::vector<double>> X = readIris(file);
+  // vector<vector<double>> D = readIris(file);
   // NeuralNetwork NN1;
   //
-  // std::vector<std::vector<double>> W = NN1.getWeight(1);
+  // testFlag(2);
   //
-  // std::vector<std::vector<double>> X_prime = transpose(X);
+  // vector<vector<double>> X = submatrix(D,{0,getSize(D)[0]},{0,4});
+  // vector<vector<double>> W = NN1.getWeight(1);
   //
+  // testFlag(3);
   //
-  // std::cout << "Size of X: ";
+  // vector<vector<double>> X_prime = transpose(X);
+  //
+  // testFlag(4);
+  //
+  // cout << "Size of D: ";
+  // displaySize(D);
+  // cout << "Size of X: ";
   // displaySize(X);
-  // std::cout << "Size of W: ";
+  // cout << "Size of W: ";
   // displaySize(W);
-  // std::cout << "Size of X': ";
+  // cout << "Size of X': ";
   // displaySize(X_prime);
+  //
+  // testFlag(5);
+  //
+  // vector<vector<double>> Z = multiply(W, X_prime);
+  // cout << "Size of Z: ";
+  // displaySize(Z);
+  //
+  // testFlag(6);
+  testFlag(1);
+  vector<vector<double>> A = {{1,2,3},{4,5,6}};
+  vector<vector<double>> B = {{1,2,3},{3,4,5},{5,6,7}};
+  vector<vector<double>> C = multiply(A,B);
+  testFlag(2);
+  cout << "Size of A: ";
+  displaySize(A);
+  cout << "Size of B: ";
+  displaySize(B);
+  cout << "Size of C: ";
+  displaySize(C);
+  testFlag(3);
+  displayMat(A);
+  displayMat(B);
+  displayMat(C);
+  testFlag(4);
+
+  return 0;
 
 }

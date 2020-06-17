@@ -41,7 +41,7 @@ std::vector<std::vector<double>> multiply(std::vector<std::vector<double>> A, st
   std::vector<int> sizeA = getSize(A);
   std::vector<int> sizeB = getSize(B);
 
-  if (sizeA[0] != sizeB[1]){
+  if (sizeA[1] != sizeB[0]){
     std::cout << "Matrix size mismatch." << std::endl;
     return {};
   }
@@ -87,44 +87,38 @@ std::vector<std::vector<double>> transpose(std::vector<std::vector<double>> A){
 }
 
 std::vector<std::vector<double>> submatrix(std::vector<std::vector<double>> A, std::vector<int> rows, std::vector<int> cols){
-  int rowBegin, rowEnd, colBegin, colEnd;
   int maxRows = getSize(A)[0];
   int maxCols = getSize(A)[1];
+  int rowBegin = 0, rowEnd = maxRows, colBegin = 0, colEnd = maxCols;
 
-  if (!between(1,2,rows.size())){
-    std::cout << "'rows' may only contain 1 or 2 elements." << std::endl;
+  if (!between(0,2,rows.size())){
+    std::cout << "'rows' may only contain 0, 1, or 2 elements." << std::endl;
   } else if (rows[0] >= rows[1]){
     std::cout << "rows[0] must be less than rows[1]" << std::endl;
   }
 
-  if (between(0, maxRows, rows[0])){
+  if (rows.size()==1 && between(1, maxRows - 1, rows[0])){
     rowBegin = rows[0];
-  } else {
-    rowBegin = 0;
+    rowEnd = rows[0] + 1;
   }
 
-  if (rows.size()==2 && between(0, maxRows, rows[1])){
+  if (rows.size()==2 && between(1, maxRows - 1, rows[1])){
     rowEnd = rows[1];
-  } else {
-    rowEnd = maxRows;
   }
 
-  if (!between(1,2,cols.size())){
-    std::cout << "'cols' may only contain 1 or 2 elements." << std::endl;
+  if (!between(0,2,cols.size())){
+    std::cout << "'cols' may only contain 0, 1, or 2 elements." << std::endl;
   } else if (cols[0] >= cols[1]){
     std::cout << "cols[0] must be less than cols[1]" << std::endl;
   }
 
-  if (between(0, maxCols, cols[0])){
+  if (cols.size()==1 && between(1, maxCols, cols[0])){
     colBegin = cols[0];
-  } else {
-    colBegin = 0;
+    colEnd = cols[0] + 1;
   }
 
   if (cols.size()==2 && between(0, maxCols, cols[1])){
     colEnd = cols[1];
-  } else {
-    colEnd = maxCols;
   }
 
   std::vector<std::vector<double>> result;
