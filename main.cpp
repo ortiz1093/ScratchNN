@@ -27,14 +27,15 @@ int main () {
   vector<vector<double>> L = multiply(W2,A);
 
   cout << "Size L: " << endl;
-  L = transpose(L);
+  // L = transpose(L);
   displaySize(L);
+  headMat(L);
 
   vector<vector<double>> Y_hat = softmax(L,2);
   cout << "Size Y_hat: " << endl;
   displaySize(Y_hat);
 
-  displayMat(Y_hat);
+  headMat(Y_hat);
 
   return 0;
 

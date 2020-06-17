@@ -38,6 +38,22 @@ std::vector<std::vector<double>> softmax(std::vector<std::vector<double>> X, int
       return {{}};
   }
 
+  while (numSamples < numOutputs){
+    std::cout << "You have more outputs than samples, is this correct [y/n]:" << std::endl;
+    std::string verify;
+    std::cin >> verify;
+    if (verify == "y"){
+      break;
+    } else {
+      std::cout << "Transposing input." << std::endl;
+      X = transpose(X);
+      transposed = !transposed;
+      numSamples = getSize(X)[0];
+      numOutputs = getSize(X)[1];
+      break;
+    }
+  }
+
   for (int i = 0; i < numSamples; i++){
     row = {};
     sumExp = 0;
@@ -45,14 +61,18 @@ std::vector<std::vector<double>> softmax(std::vector<std::vector<double>> X, int
       sumExp += exp(X[i][j]);
     }
 
+
     for (int j = 0; j < numOutputs; j++){
       row.push_back(exp(X[i][j])/sumExp);
     }
     result.push_back(row);
   }
 
+  // headMat(result);
   if (transposed){
     result = transpose(result);
+    // headMat(result);
+
   }
 
   return result;

@@ -20,6 +20,16 @@ void displayMat(std::vector<std::vector<double>> A){
   std::cout << "\n";
 }
 
+void headMat(std::vector<std::vector<double>> A){
+  for (int i = 0; i < std::min(5,(int)A.size()); i++){
+    for (int j = 0; j < std::min(10,(int)A[i].size()); j++){
+      std::cout << A[i][j] << " ";
+    }
+    std::cout << "\n";
+  }
+  std::cout << "\n";
+}
+
 void displaySize(std::vector<std::vector<double>> A){
   std::cout << A.size() << " x " << A[0].size() << std::endl;
   std::cout << "\n";

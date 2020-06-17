@@ -9,6 +9,7 @@
 
 bool between(double lo, double hi, double x);
 void displayMat(std::vector<std::vector<double>> A);
+void headMat(std::vector<std::vector<double>> A);
 void displaySize(std::vector<std::vector<double>> A);
 std::vector<int> getSize(std::vector<std::vector<double>> A);
 std::vector<std::vector<double>> multiply(std::vector<std::vector<double>> A, std::vector<std::vector<double>> B);
