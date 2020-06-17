@@ -18,6 +18,8 @@ public:
   NeuralNetwork();
   void setWeights(int seed = 0);
   void showWeights();
+  std::vector<std::vector<double>> getWeight(int layer);
+  double feedFwd(std::vector<std::vector<double>> X);
 };
 
 #endif

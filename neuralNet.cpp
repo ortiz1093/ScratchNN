@@ -2,19 +2,14 @@
 
 NeuralNetwork::NeuralNetwork(){
   setWeights(_seed);
-  showWeights();
 }
 
 void NeuralNetwork::setWeights(int seed) {
   if (seed){
-    std::cout << "Using seed: "<< _seed << std::endl;
     srand(seed);
   } else {
-    std::cout << "Using time: " << time(NULL) << std::endl;
     srand(time(NULL));
   }
-
-  std::cout << "RAND_MAX: " << RAND_MAX << std::endl;
 
   std::vector<double> row;
   double num;
@@ -43,4 +38,21 @@ void NeuralNetwork::showWeights(){
   displayMat(_w1);
   std::cout << "Second weight matrix:" << std::endl;
   displayMat(_w2);
+}
+
+std::vector<std::vector<double>> NeuralNetwork::getWeight(int layer){
+  if (layer == 1){
+    return _w1;
+  } else if (layer == 2){
+    return _w2;
+  } else {
+    std::cout << "Layer selection out of range." << std::endl;
+    return {{}};
+  }
+}
+
+double feedFwd(std::vector<std::vector<double>> X){
+  double result = 1.0;
+
+  return result;
 }
