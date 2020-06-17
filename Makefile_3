@@ -1,0 +1,15 @@
+CC := g++
+CFLAGS = -Wall -Wextra -Wfloat-equal -Wundef -Wcast-align -Wwrite-strings -Wlogical-op -Wmissing-declarations -Wredundant-decls -Wshadow -Woverloaded-virtual
+OBJ = main.o activation.o readIris.o matrixOps.o neuralNet.o
+TARGET = BasicNN
+
+default: $(TARGET)
+
+$(TARGET): $(OBJ)
+	$(CC) -o $(OBJ) $(TARGET)
+
+%.o: %.cpp %.h
+	$(CC) -c $<
+
+clean:
+	rm *.o $(TARGET).exe

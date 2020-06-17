@@ -50,9 +50,3 @@ std::vector<std::vector<double>> NeuralNetwork::getWeight(int layer){
     return {{}};
   }
 }
-
-double feedFwd(std::vector<std::vector<double>> X){
-  double result = 1.0;
-
-  return result;
-}

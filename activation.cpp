@@ -1,5 +1,9 @@
 #include "activation.h"
 
+// void testFlag (double i){
+//   std::cout << "Flag " << i << std::endl;
+// }
+
 double max(double a, double b){
   if (a > b){
     return a;
@@ -10,6 +14,48 @@ double max(double a, double b){
 
 double sigmoid(double x){
   return 1/(1 + exp(-x));
+}
+
+std::vector<std::vector<double>> softmax(std::vector<std::vector<double>> X, int axis){
+  std::vector<std::vector<double>> result;
+  std::vector<double> row;
+  int numSamples, numOutputs;
+  double sumExp;
+  bool transposed = false;
+  const int ROWS = 1,
+            COLS = 2;
+
+  switch(axis){
+    case COLS:
+      X = transpose(X);
+      transposed = true;
+    case ROWS:
+      numSamples = getSize(X)[0];
+      numOutputs = getSize(X)[1];
+      break;
+    default:
+      std::cout << "Axis selection invalid" << std::endl;
+      return {{}};
+  }
+
+  for (int i = 0; i < numSamples; i++){
+    row = {};
+    sumExp = 0;
+    for (int j = 0; j < numOutputs; j++){
+      sumExp += exp(X[i][j]);
+    }
+
+    for (int j = 0; j < numOutputs; j++){
+      row.push_back(X[i][j]/sumExp);
+    }
+    result.push_back(row);
+  }
+
+  if (transposed){
+    result = transpose(result);
+  }
+
+  return result;
 }
 
 double activate(double x, std::string fcn){
