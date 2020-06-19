@@ -1,3 +1,7 @@
 *.o
 *.exe
 Makefile_1
+Makefile_2
+Makefile_3
+/HelloTest/
+/BasicNN/

@@ -1,10 +1,9 @@
 #include "activation.h"
 
-// void testFlag (double i){
-//   std::cout << "Flag " << i << std::endl;
-// }
 
+// Return max of two numbers, a and b.
 double max(double a, double b){
+
   if (a > b){
     return a;
   } else {
@@ -12,11 +11,14 @@ double max(double a, double b){
   }
 }
 
+// Calculate the logistic sigmoid value of x.
 double sigmoid(double x){
   return 1/(1 + exp(-x));
 }
 
+// Normalizes each row or column of a matrix into a probability distribution.
 std::vector<std::vector<double>> softmax(std::vector<std::vector<double>> X, int axis){
+
   std::vector<std::vector<double>> result;
   std::vector<double> row;
   int numSamples, numOutputs;
@@ -68,16 +70,16 @@ std::vector<std::vector<double>> softmax(std::vector<std::vector<double>> X, int
     result.push_back(row);
   }
 
-  // headMat(result);
+
   if (transposed){
     result = transpose(result);
-    // headMat(result);
 
   }
 
   return result;
 }
 
+// Applies a chosen activation function to each element of a matrix
 double activate(double x, std::string fcn){
 
   double result;
@@ -116,6 +118,7 @@ double activate(double x, std::string fcn){
   return result;
 }
 
+// Applies a chosen activation function to each element in a matrix
 std::vector<std::vector<double>> matrixActivation(std::vector<std::vector<double>> mat, std::string activation){
 
   std::vector<std::vector<double>> result;

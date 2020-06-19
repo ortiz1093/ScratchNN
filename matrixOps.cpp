@@ -1,5 +1,6 @@
 #include "matrixOps.h"
 
+// Determines if a value lies on an closed interval
 bool between(double lo, double hi, double x){
   bool ans = false;
 
@@ -10,9 +11,10 @@ bool between(double lo, double hi, double x){
   return ans;
 }
 
+// Prints a matrix to the console
 void displayMat(std::vector<std::vector<double>> A){
-  for (int i = 0; i < A.size(); i++){
-    for (int j = 0; j < A[i].size(); j++){
+  for (int i = 0; (double)i < A.size(); i++){
+    for (int j = 0; (double)j < A[i].size(); j++){
       std::cout << A[i][j] << " ";
     }
     std::cout << "\n";
@@ -20,6 +22,7 @@ void displayMat(std::vector<std::vector<double>> A){
   std::cout << "\n";
 }
 
+// Prints the first 5 rows and 10 columns of a matrix to the console
 void headMat(std::vector<std::vector<double>> A){
   for (int i = 0; i < std::min(5,(int)A.size()); i++){
     for (int j = 0; j < std::min(10,(int)A[i].size()); j++){
@@ -30,11 +33,13 @@ void headMat(std::vector<std::vector<double>> A){
   std::cout << "\n";
 }
 
+// Prints the size of a matrix to the console as rows x cols
 void displaySize(std::vector<std::vector<double>> A){
   std::cout << A.size() << " x " << A[0].size() << std::endl;
   std::cout << "\n";
 }
 
+// Returns the size of a matrix to the calling program as {rows, cols}
 std::vector<int> getSize(std::vector<std::vector<double>> A){
   // int rows = A.size();
   // int cols = A[0].size();
@@ -47,6 +52,7 @@ std::vector<int> getSize(std::vector<std::vector<double>> A){
   return size;
 };
 
+// Performs matrix multiplication on A and B
 std::vector<std::vector<double>> multiply(std::vector<std::vector<double>> A, std::vector<std::vector<double>> B){
   std::vector<int> sizeA = getSize(A);
   std::vector<int> sizeB = getSize(B);
@@ -79,6 +85,7 @@ std::vector<std::vector<double>> multiply(std::vector<std::vector<double>> A, st
   return result;
 }
 
+// Performs matrix tranpose on A
 std::vector<std::vector<double>> transpose(std::vector<std::vector<double>> A){
   std::vector<int> size = getSize(A);
 
@@ -96,6 +103,7 @@ std::vector<std::vector<double>> transpose(std::vector<std::vector<double>> A){
   return result;
 }
 
+// Creates a submatrix of A
 std::vector<std::vector<double>> submatrix(std::vector<std::vector<double>> A, std::vector<int> rows, std::vector<int> cols){
   int maxRows = getSize(A)[0];
   int maxCols = getSize(A)[1];
